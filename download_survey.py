@@ -27,9 +27,9 @@ from requests.exceptions import HTTPError
 import logging
 log_format = '%(message)s'
 logging.basicConfig(format=log_format)
-logging.getLogger().setLevel(logging.INFO)  # Stop ipython debug logging bs
+logging.getLogger().setLevel(logging.WARN)  # Stop ipython debug logging bs
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
+logger.setLevel(logging.WARN)
 
 
 POLL_INTERVAL_SEC = 0.5
