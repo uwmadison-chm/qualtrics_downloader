@@ -47,13 +47,18 @@ def make_arg_parser():
         help='Directory to save downloaded CSV to',
         default='.')
     parser.add_argument(
-        '-v', '--verbose', help='print debugging output', action='store_true')
+        '-t', '--tsv', help='Export TSV instead of CSV', action='store_true')
+    parser.add_argument(
+        '-v', '--verbose', help='Print debugging output', action='store_true')
     return parser
 
 
-def request_export(base_export_url, headers):
+def request_export(base_export_url, headers, tsv=False):
     url = f'{base_export_url}/'
-    format_payload = '{"format": "csv"}'
+    if tsv:
+        format_payload = '{"format": "tsv"}'
+    else:
+        format_payload = '{"format": "csv"}'
     response = requests.request('POST', url, data=format_payload, headers=headers)
     response_json = response.json()
     logger.debug(response.text)
@@ -100,7 +105,7 @@ def main():
     url = f'https://{domain}.qualtrics.com/API/v3/surveys/{survey_id}/export-responses'
     logger.debug(f'Using URL: {url}')
 
-    progress_id = request_export(url, headers)
+    progress_id = request_export(url, headers, args.tsv)
     file_id = poll_for_file_id(url, headers, progress_id)
     download_file(url, headers, file_id, args.out_dir)
 
