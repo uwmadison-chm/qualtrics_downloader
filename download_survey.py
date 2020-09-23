@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-""" Download a survey from Qualtrics, as CSV.
+""" Download a survey from Qualtrics, as CSV or TSV.
 
 Getting your IDs are documented here:
 https://api.qualtrics.com/docs/finding-your-qualtrics-ids
@@ -44,7 +44,7 @@ def make_arg_parser():
     parser.add_argument('api_token', help='API token for your user')
     parser.add_argument('survey_id', help='ID for the survey to download')
     parser.add_argument('-o', '--out-dir',
-        help='Directory to save downloaded CSV to',
+        help='Directory to save downloaded file to',
         default='.')
     parser.add_argument(
         '-t', '--tsv', help='Export TSV instead of CSV', action='store_true')

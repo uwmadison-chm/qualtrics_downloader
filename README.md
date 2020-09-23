@@ -1,5 +1,5 @@
-# qualtrics_downloader
-A little script to download CSV data from Qualtrics
+# `qualtrics_downloader`
+A little script to download CSV/TSV data from Qualtrics
 
 Requires Python 3 and the `requests` library.
 
@@ -9,7 +9,7 @@ Requires Python 3 and the `requests` library.
 usage: download_survey.py [-h] [-o OUT_DIR] [-v]
                           qualtrics_domain api_token survey_id
 
- Download a survey from Qualtrics, as CSV.
+ Download a survey from Qualtrics, as CSV or TSV.
 
 Getting your IDs are documented here:
 https://api.qualtrics.com/docs/finding-your-qualtrics-ids
@@ -29,7 +29,8 @@ positional arguments:
 optional arguments:
   -h, --help            show this help message and exit
   -o OUT_DIR, --out-dir OUT_DIR
-                        Directory to save downloaded CSV to
+                        Directory to save downloaded file to
+  -t, --tsv             Download TSV instead of CSV
   -v, --verbose         print debugging output
   ```
 
